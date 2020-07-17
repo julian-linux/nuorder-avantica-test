@@ -1,7 +1,6 @@
 import { useSelector, useDispatch } from "react-redux";
 import { dispatchActionGetContributorsData } from "state/actions";
 
-
 let dispatch;
 
 const getContributors = () => {

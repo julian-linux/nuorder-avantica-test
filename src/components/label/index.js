@@ -1,6 +1,6 @@
 // Libraries
-import React, {useEffect} from "react";
-import isEmpty from 'lodash/isEmpty';
+import React, { useEffect } from "react";
+import isEmpty from "lodash/isEmpty";
 
 // Material Components
 import Box from "@material-ui/core/Box";
@@ -16,26 +16,26 @@ import usePaginationOptionsData from "hooks/usePaginationOptionsData";
 import Intl from "config/intl";
 
 const Label = () => {
-  const [getLabels, {loading, data}] = useLabelsData();
-  const [setOptions, paginationOptions] = usePaginationOptionsData()
+  const [getLabels, { loading, data }] = useLabelsData();
+  const [setOptions, paginationOptions] = usePaginationOptionsData();
 
   const handleChange = (_, labels) => {
     setOptions({
       ...paginationOptions,
-      labels: labels.map(({name}) => name).join(',')
-    })
-  }
+      labels: labels.map(({ name }) => name).join(","),
+    });
+  };
 
   useEffect(() => {
-    getLabels()
-  },[getLabels])
+    getLabels();
+  }, [getLabels]);
 
-  if(isEmpty(data) || loading) {
-    return <Loading />
+  if (isEmpty(data) || loading) {
+    return <Loading />;
   }
 
   return (
-    <Box style={{width: '100%'}}>
+    <Box style={{ width: "100%" }}>
       <Intl variant="caption" langKey={"LABEL"} underlinePosition={1} />
       <AutocompleteComponent
         options={data}
@@ -43,7 +43,7 @@ const Label = () => {
         onChange={handleChange}
       />
     </Box>
-  )
+  );
 };
 
 export default Label;

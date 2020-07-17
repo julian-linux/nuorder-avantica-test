@@ -1,6 +1,6 @@
 // Libraries
 import React, { useState, useRef } from "react";
-import ReactMarkdown from 'react-markdown';
+import ReactMarkdown from "react-markdown";
 import map from "lodash/map";
 import { useHotkeys } from "react-hotkeys-hook";
 
@@ -75,8 +75,8 @@ const List = ({ issues }) => {
                   </Typography>
                 </Box>
                 <Box className={`issues-list-body ${classes.body}`}>
-                  <Typography variant='caption'>
-                    <ReactMarkdown source={body} escapeHtml={false}/>
+                  <Typography variant="caption">
+                    <ReactMarkdown source={body} escapeHtml={false} />
                   </Typography>
                 </Box>
               </Grid>

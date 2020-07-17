@@ -5,11 +5,11 @@ import setReducer from "../utils/setReducer";
 export const initialState = {
   contributors: {
     loading: false,
-    data: []
+    data: [],
   },
   labels: {
     loading: false,
-    data: []
+    data: [],
   },
   issues: {
     paginationOptions: {

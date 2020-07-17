@@ -33,7 +33,6 @@ export const dispatchActionGetLabelsData = (dispatch) => async () => {
   }
 };
 
-
 export const dispatchActionGetContributorsData = (dispatch) => async () => {
   dispatch(ac.getContributorsRequestAC());
 

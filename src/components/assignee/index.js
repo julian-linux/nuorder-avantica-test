@@ -1,5 +1,5 @@
 // Libraries
-import React, {useEffect} from "react";
+import React, { useEffect } from "react";
 import isEmpty from "lodash/isEmpty";
 
 // Material Components
@@ -18,31 +18,30 @@ import usePaginationOptionsData from "hooks/usePaginationOptionsData";
 import Intl from "../../config/intl";
 
 // Styles
-import useStyles from './styles'
+import useStyles from "./styles";
 
 const Assignee = () => {
   const classes = useStyles();
-  const [getContributors, {loading, data}] = useContributorsData();
-  const [setOptions, paginationOptions] = usePaginationOptionsData()
+  const [getContributors, { loading, data }] = useContributorsData();
+  const [setOptions, paginationOptions] = usePaginationOptionsData();
 
   const handleChange = (_, assignee) => {
     setOptions({
       ...paginationOptions,
-      assignee: assignee ? assignee.login : undefined
-    })
-  }
+      assignee: assignee ? assignee.login : undefined,
+    });
+  };
 
   useEffect(() => {
-    getContributors()
-  },[getContributors])
+    getContributors();
+  }, [getContributors]);
 
-
-  if(isEmpty(data) || loading) {
-    return <Loading />
+  if (isEmpty(data) || loading) {
+    return <Loading />;
   }
 
   const renderOption = (option) => (
-    <Box display='flex'>
+    <Box display="flex">
       <Avatar
         className={classes.iconSmall}
         src={option.avatar_url}
@@ -50,10 +49,10 @@ const Assignee = () => {
       />
       <Typography>{option.login}</Typography>
     </Box>
-  )
+  );
 
   return (
-    <Box style={{width: '100%'}}>
+    <Box style={{ width: "100%" }}>
       <Intl variant="caption" langKey={"ASSIGNEE"} underlinePosition={1} />
       <AutocompleteComponent
         options={data}

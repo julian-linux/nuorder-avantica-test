@@ -11,10 +11,10 @@ export const useListStyles = makeStyles((theme) => ({
   root: {
     height: "100vh",
     overflow: "auto",
-    '& .Mui-selected .issues-list-body': {
-      minHeight: '65px',
-      height: 'auto',
-      overflow: "auto"
+    "& .Mui-selected .issues-list-body": {
+      minHeight: "65px",
+      height: "auto",
+      overflow: "auto",
     },
   },
   iconSmall: {
@@ -30,10 +30,10 @@ export const useListStyles = makeStyles((theme) => ({
   body: {
     height: "65px",
     overflow: "hidden",
-    '&:hover': {
-      minHeight: '65px',
-      height: 'auto',
-      overflow: "auto"
+    "&:hover": {
+      minHeight: "65px",
+      height: "auto",
+      overflow: "auto",
     },
   },
 }));
