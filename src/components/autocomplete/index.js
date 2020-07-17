@@ -1,5 +1,5 @@
 // Libraries
-import React, { useEffect, useRef, useState, useMemo } from "react";
+import React, { useEffect, useState, useMemo } from "react";
 import PropTypes from "prop-types";
 import debounce from "lodash/debounce";
 
@@ -59,7 +59,7 @@ const AutocompleteComponent = ({
       setAutocompleteOptions([...response]);
       setLoading(false);
     });
-  }, [inputValue, fetch]);
+  }, [inputValue, fetch, endpoint]);
 
   return (
     <Box>

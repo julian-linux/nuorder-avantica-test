@@ -1,13 +1,26 @@
+import isEmpty from 'lodash/isEmpty'
+
 import * as api from "./api";
 
 import * as ac from "./actionCreators";
 
-export const dispatchActionGetIssuesData = (dispatch) => async (options) => {
+export const dispatchActionGetIssuesData = (dispatch) => async ({author, ...options}) => {
   dispatch(ac.getIssuesRequestAC());
-
   try {
-    const { data } = await api.getIssues(options);
-    dispatch(ac.getIssuesSuccessAC(data));
+    if(!isEmpty(author)) {
+
+      options.q = `repo:facebook/react author:${author.login}`;
+      if (options.state !== 'all') {
+        options.q += ` is:${options.state}`;
+      }
+
+      const { data } = await api.searchByAuthor(options);
+        dispatch(ac.getIssuesSuccessAC(data.items));
+    }else {
+      const { data } = await api.getIssues(options);
+      dispatch(ac.getIssuesSuccessAC(data));
+
+    }
   } catch (e) {
     console.error("---error in dispatchActionGetIssuesData---", e);
     dispatch(ac.requestErrorAC());
@@ -44,3 +57,18 @@ export const dispatchActionGetContributorsData = (dispatch) => async () => {
     dispatch(ac.requestErrorAC());
   }
 };
+
+// export const dispatchActionGetSearchByAuthorData = (dispatch) => async (author, options) => {
+//   dispatch(ac.getSearchByAuthorRequestAC());
+//   options.q = `repo:facebook/react author:${author}`;
+//
+//   try {
+//     const { data } = await api.searchByAuthor(options);
+//     dispatch(ac.getSearchByAuthorSuccessAC(data.items));
+//   } catch (e) {
+//     console.error("---error in dispatchActionGetSearchByAuthorData---", e);
+//     dispatch(ac.requestErrorAC());
+//   }
+// // };
+//
+// export const dispatchActionSelectAuthor

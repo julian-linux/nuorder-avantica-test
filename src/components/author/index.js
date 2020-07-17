@@ -1,21 +1,34 @@
+// Libraries
 import React from "react";
-import AutocompleteComponent from "../autocomplete";
-import usePaginationOptionsData from "../../hooks/usePaginationOptionsData";
+
+// Material Components
 import Box from "@material-ui/core/Box";
 import Avatar from "@material-ui/core/Avatar";
 import Typography from "@material-ui/core/Typography";
 
-import useStyles from "./styles";
+// Components
+import AutocompleteComponent from "../autocomplete";
+
+// Hooks
+// import useSearchByAuthor from "hooks/useSearchByAuthor";
+import usePaginationOptionsData from "hooks/usePaginationOptionsData";
+
+// Intl
 import Intl from "../../config/intl";
+
+// Styles
+import useStyles from "./styles";
 
 const Author = () => {
   const classes = useStyles();
+  // const [getIssues] = useSearchByAuthor();
   const [setOptions, paginationOptions] = usePaginationOptionsData();
 
   const handleChange = (_, author) => {
+    // getIssues(author ? author.login : undefined)
     setOptions({
       ...paginationOptions,
-      author: author ? author.login : undefined,
+      author,
     });
   };
 

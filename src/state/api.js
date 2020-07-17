@@ -11,4 +11,5 @@ export const getContributors = () =>
 export const getAutocompleteEndpoint = (endpoint, params) =>
   api.get(endpoint, { params });
 
-// https://api.github.com/search/users?q=jul&per_page=5
+export const searchByAuthor = params =>api.get("/search/issues", { params });
+
