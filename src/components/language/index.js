@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import React, { useEffect, useState } from "react";
 
 import FormGroup from "@material-ui/core/FormGroup";
 import Grid from "@material-ui/core/Grid";
@@ -14,14 +14,13 @@ import { onlyText } from "../../config/intl";
 import { AntSwitch } from "./styles";
 
 const Language = () => {
-  const [setLang, lang] = useLang()
-  const [checked, setChecked] = useState(lang === 'en');
+  const [setLang, lang] = useLang();
+  const [checked, setChecked] = useState(lang === "en");
 
   const handleChange = () => {
     setChecked(!checked);
-    setLang(!checked ? 'en' : 'es');
+    setLang(!checked ? "en" : "es");
   };
-
 
   return (
     <FormGroup>

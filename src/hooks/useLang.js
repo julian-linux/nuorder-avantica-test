@@ -1,7 +1,7 @@
 import { useSelector } from "react-redux";
 
 const setLang = (lang) => {
-  localStorage.setItem('lang', lang);
+  localStorage.setItem("lang", lang);
   window.location.reload();
 };
 

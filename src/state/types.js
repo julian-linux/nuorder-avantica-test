@@ -14,5 +14,5 @@ export default keyMirror({
   CONTRIBUTORS: {
     REQUEST: null,
     SUCCESS: null,
-  }
+  },
 });

@@ -13,7 +13,6 @@ import useLang from "hooks/useLang";
 import es from "./translations/es.json";
 import en from "./translations/en.json";
 
-
 const translations = {
   es,
   en,
@@ -27,7 +26,7 @@ const addUnderline = (str, idx) => {
     idx + 1
   )}`;
 };
-let lang = localStorage.getItem('lang') || 'en';
+let lang = localStorage.getItem("lang") || "en";
 
 export const onlyText = (langKey, underlinePosition) => {
   let translation = translations[lang][langKey] || "####";
@@ -38,11 +37,11 @@ export const onlyText = (langKey, underlinePosition) => {
 };
 
 const Intl = ({ langKey, underlinePosition, showOnlyText, ...props }) => {
-  const langHook = useLang()
-  lang = langHook[1]
+  const langHook = useLang();
+  lang = langHook[1];
 
   if (showOnlyText) {
-    return onlyText(langKey)
+    return onlyText(langKey);
   }
 
   if (isNumber(underlinePosition)) {
@@ -67,7 +66,7 @@ Intl.propTypes = {
 
 Intl.defaultProps = {
   underlinePosition: null,
-  showOnlyText: false
+  showOnlyText: false,
 };
 
 export default Intl;
