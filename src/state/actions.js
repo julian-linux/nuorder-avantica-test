@@ -1,25 +1,37 @@
-import isEmpty from 'lodash/isEmpty'
+import isEmpty from "lodash/isEmpty";
 
 import * as api from "./api";
 
 import * as ac from "./actionCreators";
 
-export const dispatchActionGetIssuesData = (dispatch) => async ({author, ...options}) => {
+export const dispatchActionSetIssuesData = (dispatch) => async (
+  issues,
+  options
+) => {
+  if (isEmpty(issues)) {
+    await dispatchActionGetIssuesData(dispatch)(options);
+  } else {
+    dispatch(ac.getIssuesSuccessAC(issues));
+  }
+};
+
+export const dispatchActionGetIssuesData = (dispatch) => async ({
+  author,
+  ...options
+}) => {
   dispatch(ac.getIssuesRequestAC());
   try {
-    if(!isEmpty(author)) {
-
+    if (!isEmpty(author)) {
       options.q = `repo:facebook/react author:${author.login}`;
-      if (options.state !== 'all') {
+      if (options.state !== "all") {
         options.q += ` is:${options.state}`;
       }
 
       const { data } = await api.searchByAuthor(options);
-        dispatch(ac.getIssuesSuccessAC(data.items));
-    }else {
+      dispatch(ac.getIssuesSuccessAC(data.items));
+    } else {
       const { data } = await api.getIssues(options);
       dispatch(ac.getIssuesSuccessAC(data));
-
     }
   } catch (e) {
     console.error("---error in dispatchActionGetIssuesData---", e);

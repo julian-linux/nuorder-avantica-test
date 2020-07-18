@@ -12,12 +12,11 @@ export default makeStyles((theme) => ({
     left: "10px",
   },
   autocomplete: {
-    marginBottom: theme.spacing(2),
     "& .MuiFormLabel-root": {
-      marginLeft: theme.spacing(3),
+      // marginLeft: theme.spacing(1),
     },
     "& .MuiInputBase-root": {
-      paddingLeft: theme.spacing(5),
+      paddingLeft: theme.spacing(1),
     },
   },
 }));

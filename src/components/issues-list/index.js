@@ -1,5 +1,5 @@
 // Libraries
-import React, { useEffect, useMemo } from "react";
+import React, { useEffect } from "react";
 import isEmpty from "lodash/isEmpty";
 
 // Material Components
@@ -29,14 +29,10 @@ const IssuesList = () => {
 
   const renderLoading = loading && <Loading />;
 
-  const renderResults = useMemo(
-    () =>
-      isEmpty(data) ? (
-        <Intl langKey="NO_ISSUES" variant="h3" color="primary" />
-      ) : (
-        <List issues={data}></List>
-      ),
-    [data]
+  const renderResults = isEmpty(data) ? (
+    <Intl langKey="NO_ISSUES" variant="h3" color="primary" />
+  ) : (
+    <List issues={data}></List>
   );
 
   return (

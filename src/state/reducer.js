@@ -3,7 +3,6 @@ import TYPES from "./types";
 import setReducer from "../utils/setReducer";
 
 export const initialState = {
-
   contributors: {
     loading: false,
     data: [],
@@ -29,7 +28,7 @@ export const initialState = {
 const mainReducer = (state = { ...initialState }, { type, payload = {} }) => {
   switch (type) {
     case TYPES.ISSUES.SUCCESS:
-    // case TYPES.SEARCH_BY_AUTHOR.SUCCESS:
+      // case TYPES.SEARCH_BY_AUTHOR.SUCCESS:
       return setReducer(state, payload, "set", "issues.data");
     case TYPES.LABELS.SUCCESS:
       return setReducer(state, payload, "set", "labels.data");

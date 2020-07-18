@@ -6,10 +6,9 @@ import Radio from "@material-ui/core/Radio";
 import RadioGroup from "@material-ui/core/RadioGroup";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import FormControl from "@material-ui/core/FormControl";
-import FormLabel from "@material-ui/core/FormLabel";
 
 // Intl
-import { onlyText } from "../../config/intl";
+import Intl, { onlyText } from "../../config/intl";
 
 // Styles
 import useStyles from "./styles";
@@ -31,7 +30,7 @@ const State = () => {
 
   return (
     <FormControl component="fieldset" className={classes.root}>
-      <FormLabel component="legend">{onlyText("STATUS")}</FormLabel>
+      <Intl variant="caption" langKey={"STATUS"} underlinePosition={1} />
       <RadioGroup
         aria-label="status"
         name="status"

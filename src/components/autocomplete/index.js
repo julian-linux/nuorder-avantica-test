@@ -20,7 +20,7 @@ import useStyles from "./styles";
 
 const callEndpoint = (endpoint) => async (params, callback) => {
   const { data } = await getAutocompleteEndpoint(endpoint, params);
-  callback(data.items);
+  callback(data.items || data);
 };
 
 const AutocompleteComponent = ({
@@ -66,6 +66,7 @@ const AutocompleteComponent = ({
       {loading && <CircularProgress color="primary" className={classes.icon} />}
       <Autocomplete
         style={{ width: "100%" }}
+        className={classes.autocomplete}
         multiple={multiple}
         onChange={onChange}
         options={autocompleteOptions}

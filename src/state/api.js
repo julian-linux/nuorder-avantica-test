@@ -11,5 +11,4 @@ export const getContributors = () =>
 export const getAutocompleteEndpoint = (endpoint, params) =>
   api.get(endpoint, { params });
 
-export const searchByAuthor = params =>api.get("/search/issues", { params });
-
+export const searchByAuthor = (params) => api.get("/search/issues", { params });
