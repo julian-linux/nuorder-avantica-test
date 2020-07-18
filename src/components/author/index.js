@@ -10,7 +10,6 @@ import Typography from "@material-ui/core/Typography";
 import AutocompleteComponent from "../autocomplete";
 
 // Hooks
-// import useSearchByAuthor from "hooks/useSearchByAuthor";
 import usePaginationOptionsData from "hooks/usePaginationOptionsData";
 
 // Intl
@@ -21,11 +20,9 @@ import useStyles from "./styles";
 
 const Author = () => {
   const classes = useStyles();
-  // const [getIssues] = useSearchByAuthor();
   const [setOptions, paginationOptions] = usePaginationOptionsData();
 
   const handleChange = (_, author) => {
-    // getIssues(author ? author.login : undefined)
     setOptions({
       ...paginationOptions,
       author,

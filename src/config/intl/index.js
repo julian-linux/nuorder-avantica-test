@@ -6,16 +6,18 @@ import isNumber from "lodash/isNumber";
 // Material Components
 import Typography from "@material-ui/core/Typography";
 
+// Hooks
+import useLang from "hooks/useLang";
+
 // Translations
 import es from "./translations/es.json";
 import en from "./translations/en.json";
+
 
 const translations = {
   es,
   en,
 };
-
-let langcode = "es";
 
 const addUnderline = (str, idx) => {
   if (idx >= str.length) {
@@ -25,20 +27,24 @@ const addUnderline = (str, idx) => {
     idx + 1
   )}`;
 };
-
-export const changeLangCode = (code) => {
-  langcode = code;
-};
+let lang = localStorage.getItem('lang') || 'en';
 
 export const onlyText = (langKey, underlinePosition) => {
-  let translation = translations[langcode][langKey] || "####";
+  let translation = translations[lang][langKey] || "####";
   if (isNumber(underlinePosition)) {
     return addUnderline(translation, underlinePosition);
   }
   return translation;
 };
 
-const Intl = ({ langKey, underlinePosition, ...props }) => {
+const Intl = ({ langKey, underlinePosition, showOnlyText, ...props }) => {
+  const langHook = useLang()
+  lang = langHook[1]
+
+  if (showOnlyText) {
+    return onlyText(langKey)
+  }
+
   if (isNumber(underlinePosition)) {
     return (
       <Typography
@@ -56,10 +62,12 @@ const Intl = ({ langKey, underlinePosition, ...props }) => {
 Intl.propTypes = {
   langKey: PropTypes.string.isRequired,
   underlinePosition: PropTypes.number,
+  showOnlyText: PropTypes.bool,
 };
 
 Intl.defaultProps = {
   underlinePosition: null,
+  showOnlyText: false
 };
 
 export default Intl;

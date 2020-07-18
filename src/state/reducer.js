@@ -3,6 +3,7 @@ import TYPES from "./types";
 import setReducer from "../utils/setReducer";
 
 export const initialState = {
+  lang: localStorage.getItem('lang') || 'en',
   contributors: {
     loading: false,
     data: [],

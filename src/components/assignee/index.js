@@ -15,7 +15,7 @@ import useContributorsData from "hooks/useContributorsData";
 import usePaginationOptionsData from "hooks/usePaginationOptionsData";
 
 // Intl
-import Intl from "../../config/intl";
+import Intl from "config/intl";
 
 // Styles
 import useStyles from "./styles";

@@ -14,10 +14,5 @@ export default keyMirror({
   CONTRIBUTORS: {
     REQUEST: null,
     SUCCESS: null,
-  },
-  // SELECT_AUTHOR: null,
-  // SEARCH_BY_AUTHOR: {
-  //   REQUEST: null,
-  //   SUCCESS: null,
-  // },
+  }
 });

@@ -1,3 +1,26 @@
 {
-  "ADVANCED_SEARCH": "Advanced Search"
+  "SEARCH": "Search",
+  "ADVANCED_SEARCH": "Advanced Search",
+  "FAST_SEARCH": "Fast Search",
+  "SEARCH_OPTIONS": "Search Options",
+  "AUTHOR": "Author",
+  "STATUS": "Status",
+  "STATUS.OPEN": "Open",
+  "STATUS.CLOSE": "Closed",
+  "ALL": "All",
+  "ASSIGNEE": "Assignee",
+  "LABEL": "Label",
+  "SORT": "Sort",
+  "ISSUES": "Issues",
+  "NO_ISSUES": "Issues not Found",
+  "SPANISH": "Spanish",
+  "ENGLISH": "English",
+  "PAGINATION": "Pagination",
+  "REACTIONS": "Reactions",
+  "SORT_NEWEST": "Newest",
+  "SORT_OLDEST": "Oldest",
+  "SORT_MOST_COMMENTED": "Most Commented",
+  "SORT_LEAST_COMMENTED": "Least Commented",
+  "SORT_RECENTLY_UPDATED": "Recently Updated",
+  "SORT_LEAST_RECENTLY_UPDATED": "Least Recently Updated"
 }

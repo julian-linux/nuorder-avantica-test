@@ -69,18 +69,3 @@ export const dispatchActionGetContributorsData = (dispatch) => async () => {
     dispatch(ac.requestErrorAC());
   }
 };
-
-// export const dispatchActionGetSearchByAuthorData = (dispatch) => async (author, options) => {
-//   dispatch(ac.getSearchByAuthorRequestAC());
-//   options.q = `repo:facebook/react author:${author}`;
-//
-//   try {
-//     const { data } = await api.searchByAuthor(options);
-//     dispatch(ac.getSearchByAuthorSuccessAC(data.items));
-//   } catch (e) {
-//     console.error("---error in dispatchActionGetSearchByAuthorData---", e);
-//     dispatch(ac.requestErrorAC());
-//   }
-// // };
-//
-// export const dispatchActionSelectAuthor

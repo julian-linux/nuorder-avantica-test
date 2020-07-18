@@ -88,26 +88,3 @@ export const getContributorsSuccessAC = (data) => ({
     },
   },
 });
-
-// -----
-// LABELS
-// -----export const getSearchByAuthorRequestAC = () => ({
-// //   type: TYPES.SEARCH_BY_AUTHOR.REQUEST,
-// //   payload: {
-// //     issues: {
-// //       loading: true,
-// //     },
-// //   },
-// // });
-// //
-// // export const getSearchByAuthorSuccessAC = (data) => ({
-// //   type: TYPES.SEARCH_BY_AUTHOR.SUCCESS,
-// //   payload: {
-// //     issues: {
-// //       loading: false,
-// //       data,
-// //     },
-// //   },
-
-//
-// });
