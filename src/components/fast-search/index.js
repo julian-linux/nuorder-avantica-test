@@ -70,7 +70,7 @@ const FastSearch = () => {
   );
 
   return (
-    <Box style={{ width: "100%" }}>
+    <Box style={{ width: "100%", marginLeft: 10 }}>
       <Intl variant="caption" langKey={"FAST_SEARCH"} />
       <AutocompleteComponent
         getOptionLabel={(option) => option.title}

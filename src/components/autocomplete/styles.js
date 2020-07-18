@@ -6,15 +6,12 @@ export default makeStyles((theme) => ({
   icon: {
     position: "absolute",
     zIndex: 3,
-    width: "20px!important",
-    height: "20px!important",
-    top: "25px",
-    left: "10px",
+    width: "16px!important",
+    height: "16px!important",
+    bottom: 16,
+    left: 10,
   },
   autocomplete: {
-    "& .MuiFormLabel-root": {
-      // marginLeft: theme.spacing(1),
-    },
     "& .MuiInputBase-root": {
       paddingLeft: theme.spacing(1),
     },

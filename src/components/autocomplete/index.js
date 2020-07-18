@@ -58,7 +58,7 @@ onHandleRef
     setLoading(true);
 
     fetch({ q: inputValue, per_page: 5 }, (response) => {
-      setAutocompleteOptions([...response]);
+      setAutocompleteOptions(response);
       setLoading(false);
     });
   }, [inputValue, fetch, endpoint]);
@@ -73,16 +73,15 @@ onHandleRef
     <Box>
       {loading && <CircularProgress color="primary" className={classes.icon} />}
       <Autocomplete
-
-        style={{ width: "100%" }}
-        className={classes.autocomplete}
         multiple={multiple}
         onChange={onChange}
+        filterOptions={(x) => x}
         options={autocompleteOptions}
         getOptionLabel={getOptionLabel}
         renderOption={renderOption}
         filterSelectedOptions
-        autoComplete={!!endpoint}
+        autoComplete
+        includeInputInList
         freeSolo={!!endpoint}
         renderInput={(params) => (
           <TextField
@@ -98,9 +97,9 @@ onHandleRef
 };
 
 AutocompleteComponent.propTypes = {
-  options: PropTypes.array,
   getOptionLabel: PropTypes.func.isRequired,
   onChange: PropTypes.func.isRequired,
+  options: PropTypes.array,
   multiple: PropTypes.bool,
   renderOption: PropTypes.func,
 };
