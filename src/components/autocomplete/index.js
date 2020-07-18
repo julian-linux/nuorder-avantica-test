@@ -1,5 +1,5 @@
 // Libraries
-import React, { useEffect, useState, useMemo } from "react";
+import React, { useEffect, useState, useMemo, useRef } from "react";
 import PropTypes from "prop-types";
 import debounce from "lodash/debounce";
 
@@ -30,11 +30,13 @@ const AutocompleteComponent = ({
   multiple,
   renderOption,
   endpoint,
+onHandleRef
 }) => {
   const classes = useStyles();
   const [inputValue, setInputValue] = useState("");
   const [autocompleteOptions, setAutocompleteOptions] = useState(options);
   const [loading, setLoading] = useState(false);
+  const inputRef = useRef(null)
 
   const fetch = useMemo(() => debounce(callEndpoint(endpoint), 1000), [
     endpoint,
@@ -61,10 +63,17 @@ const AutocompleteComponent = ({
     });
   }, [inputValue, fetch, endpoint]);
 
+  useEffect(() => {
+    if(onHandleRef) {
+      onHandleRef(inputRef)
+    }
+  }, [onHandleRef])
+
   return (
     <Box>
       {loading && <CircularProgress color="primary" className={classes.icon} />}
       <Autocomplete
+
         style={{ width: "100%" }}
         className={classes.autocomplete}
         multiple={multiple}
@@ -78,6 +87,7 @@ const AutocompleteComponent = ({
         renderInput={(params) => (
           <TextField
             {...params}
+            inputRef={inputRef}
             placeholder={onlyText("SEARCH")}
             onChange={(evt) => endpoint && setInputValue(evt.target.value)}
           />

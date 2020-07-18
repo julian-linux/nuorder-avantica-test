@@ -1,11 +1,12 @@
 // Libraries
-import React from "react";
+import React, { useRef } from "react";
 
 // Material Components
 import Radio from "@material-ui/core/Radio";
 import RadioGroup from "@material-ui/core/RadioGroup";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import FormControl from "@material-ui/core/FormControl";
+import { useHotkeys } from "react-hotkeys-hook";
 
 // Intl
 import Intl, { onlyText } from "../../config/intl";
@@ -17,8 +18,12 @@ import usePaginationOptionsData from "hooks/usePaginationOptionsData";
 const State = () => {
   const classes = useStyles();
   const [setOptions, options] = usePaginationOptionsData();
-
   const [value, setValue] = React.useState(options.state);
+  const ref = useRef(null)
+
+  useHotkeys("alt+3", () => {
+    ref.current.focus();
+  });
 
   const handleChange = (event) => {
     setValue(event.target.value);
@@ -30,7 +35,7 @@ const State = () => {
 
   return (
     <FormControl component="fieldset" className={classes.root}>
-      <Intl variant="caption" langKey={"STATUS"} underlinePosition={1} />
+      <Intl variant="caption" langKey={"STATUS"} />
       <RadioGroup
         aria-label="status"
         name="status"
@@ -39,7 +44,8 @@ const State = () => {
       >
         <FormControlLabel
           value="open"
-          control={<Radio />}
+          inputRef={ref}
+          control={<Radio  />}
           label={onlyText("STATUS.OPEN")}
         />
         <FormControlLabel

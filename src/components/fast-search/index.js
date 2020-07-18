@@ -1,6 +1,7 @@
 // Libraries
-import React from "react";
+import React, {useRef} from "react";
 import isEmpty from "lodash/isEmpty";
+import { useHotkeys } from "react-hotkeys-hook";
 
 // Material Components
 import Box from "@material-ui/core/Box";
@@ -24,6 +25,15 @@ import CheckCircleIcon from "@material-ui/icons/CheckCircle";
 const FastSearch = () => {
   const classes = useStyles();
   const [getIssues, { setIssues }] = useIssuesData();
+  const ref = useRef(null)
+
+  useHotkeys("alt+1", () => {
+    ref.current.focus();
+  });
+
+  const handleRef = aref => {
+    ref.current=aref.current
+  }
 
   const handleChange = (_, issue) => {
     if (!isEmpty(issue)) {
@@ -44,7 +54,7 @@ const FastSearch = () => {
         <Box>
           <span
             style={{ color: "red", fontSize: 10 }}
-          >{`---- #${option.number} `}</span>
+          >{` #${option.number} `}</span>
           <span style={{ fontSize: 12 }}>{option.title.slice(0, 25)}</span>
         </Box>
         <Box display="flex">
@@ -61,13 +71,14 @@ const FastSearch = () => {
 
   return (
     <Box style={{ width: "100%" }}>
-      <Intl variant="caption" langKey={"FAST_SEARCH"} underlinePosition={1} />
+      <Intl variant="caption" langKey={"FAST_SEARCH"} />
       <AutocompleteComponent
         getOptionLabel={(option) => option.title}
         renderOption={renderOption}
         onChange={handleChange}
         endpoint="/repos/facebook/react/issues"
         multiple={false}
+        onHandleRef={handleRef}
       />
     </Box>
   );

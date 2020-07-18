@@ -43,7 +43,6 @@ const IssuesList = () => {
             langKey="ISSUES"
             variant="h4"
             color="primary"
-            underlinePosition={0}
           />
         </Box>
         <Pagination show="pagination" />

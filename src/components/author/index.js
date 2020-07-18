@@ -1,5 +1,6 @@
 // Libraries
-import React from "react";
+import React, {useRef} from "react";
+import { useHotkeys } from "react-hotkeys-hook";
 
 // Material Components
 import Box from "@material-ui/core/Box";
@@ -21,6 +22,15 @@ import useStyles from "./styles";
 const Author = () => {
   const classes = useStyles();
   const [setOptions, paginationOptions] = usePaginationOptionsData();
+  const ref = useRef(null)
+
+  useHotkeys("alt+4", () => {
+    ref.current.focus();
+  });
+
+  const handleRef = aref => {
+    ref.current=aref.current
+  }
 
   const handleChange = (_, author) => {
     setOptions({
@@ -42,13 +52,14 @@ const Author = () => {
 
   return (
     <Box style={{ width: "100%" }}>
-      <Intl variant="caption" langKey={"AUTHOR"} underlinePosition={1} />
+      <Intl variant="caption" langKey={"AUTHOR"} />
       <AutocompleteComponent
         getOptionLabel={(option) => option.login}
         renderOption={renderOption}
         onChange={handleChange}
         endpoint="/search/users"
         multiple={false}
+        onHandleRef={handleRef}
       />
     </Box>
   );

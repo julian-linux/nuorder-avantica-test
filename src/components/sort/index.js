@@ -1,5 +1,5 @@
 // Libraries
-import React, { useState } from "react";
+import React, {useRef, useState} from "react";
 
 // Material Components
 import Box from "@material-ui/core/Box";
@@ -12,6 +12,7 @@ import Intl, { onlyText } from "../../config/intl";
 
 // Hooks
 import usePaginationOptionsData from "../../hooks/usePaginationOptionsData";
+import {useHotkeys} from "react-hotkeys-hook";
 
 const sortOptions = [
   {
@@ -45,6 +46,13 @@ const Sort = () => {
   const [setOptions, options] = usePaginationOptionsData();
   const [value, setValue] = useState(options.sort || "");
 
+  const ref = useRef(null)
+
+  useHotkeys("alt+7", () => {
+    console.log(ref)
+    ref.current.focus();
+  });
+
   const handleChange = (evt) => {
     setValue(evt.target.value);
     setOptions({
@@ -52,17 +60,17 @@ const Sort = () => {
       sort: evt.target.value,
     });
   };
+
   return (
     <Box style={{ width: "100%" }}>
-      <Intl variant="caption" langKey={"SORT"} underlinePosition={1} />
-      <FormControl style={{ width: "100%" }}>
-        {/*<InputLabel id="select-sort-label">{onlyText('SORT')}</InputLabel>*/}
+      <Intl variant="caption" langKey={"SORT"} />
+      <FormControl style={{ width: "100%" }} >
         <Select
-          // labelId="select-sort-label"
           id="select-sort"
           value={value}
           onChange={handleChange}
           label={onlyText("SORT")}
+          innerRef={ref}
         >
           <MenuItem value="">
             <em></em>

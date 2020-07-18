@@ -1,5 +1,6 @@
 // Libraries
-import React, { useEffect } from "react";
+import React, {useEffect, useRef} from "react";
+import {useHotkeys} from "react-hotkeys-hook";
 import isEmpty from "lodash/isEmpty";
 
 // Material Components
@@ -24,6 +25,16 @@ const Assignee = () => {
   const classes = useStyles();
   const [getContributors, { loading, data }] = useContributorsData();
   const [setOptions, paginationOptions] = usePaginationOptionsData();
+  const ref = useRef(null)
+
+  useHotkeys("alt+5", () => {
+    ref.current.focus();
+  });
+
+  const handleRef = aref => {
+    ref.current=aref.current
+  }
+
 
   const handleChange = (_, assignee) => {
     setOptions({
@@ -53,13 +64,14 @@ const Assignee = () => {
 
   return (
     <Box style={{ width: "100%" }}>
-      <Intl variant="caption" langKey={"ASSIGNEE"} underlinePosition={1} />
+      <Intl variant="caption" langKey={"ASSIGNEE"}  />
       <AutocompleteComponent
         options={data}
         getOptionLabel={(option) => option.login}
         renderOption={renderOption}
         onChange={handleChange}
         multiple={false}
+        onHandleRef={handleRef}
       />
     </Box>
   );

@@ -42,7 +42,7 @@ const List = ({ issues }) => {
   });
 
   return (
-    <MaterialList className={classes.root} ref={listEl}>
+    <MaterialList className={classes.root} innerRef={listEl}>
       {map(
         issues,
         ({ number, state, title, user, body, comments, html_url }, idx) => (

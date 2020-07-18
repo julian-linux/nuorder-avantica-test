@@ -1,5 +1,5 @@
 // Libraries
-import React, { useEffect } from "react";
+import React, {useEffect, useRef} from "react";
 import isEmpty from "lodash/isEmpty";
 
 // Material Components
@@ -14,10 +14,21 @@ import useLabelsData from "hooks/useLabelsData";
 import usePaginationOptionsData from "hooks/usePaginationOptionsData";
 // Intl
 import Intl from "config/intl";
+import {useHotkeys} from "react-hotkeys-hook";
 
 const Label = () => {
   const [getLabels, { loading, data }] = useLabelsData();
   const [setOptions, paginationOptions] = usePaginationOptionsData();
+  const ref = useRef(null)
+
+  useHotkeys("alt+6", () => {
+    ref.current.focus();
+  });
+
+  const handleRef = aref => {
+    ref.current=aref.current
+  }
+
 
   const handleChange = (_, labels) => {
     setOptions({
@@ -36,11 +47,12 @@ const Label = () => {
 
   return (
     <Box style={{ width: "100%" }}>
-      <Intl variant="caption" langKey={"LABEL"} underlinePosition={1} />
+      <Intl variant="caption" langKey={"LABEL"} />
       <AutocompleteComponent
         options={data}
         getOptionLabel={(option) => option.name}
         onChange={handleChange}
+        onHandleRef={handleRef}
       />
     </Box>
   );

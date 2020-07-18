@@ -71,7 +71,7 @@ const Reactions = () => {
   };
   return (
     <Box>
-      <Intl variant="caption" langKey={"REACTIONS"} underlinePosition={1} />
+      <Intl variant="caption" langKey={"REACTIONS"} />
       <Box display="flex" mt={1} flexWrap="wrap">
         {reactions.map(({ name, icon }) => (
           <Button

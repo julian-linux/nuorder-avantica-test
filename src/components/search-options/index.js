@@ -10,6 +10,7 @@ import ListItemText from "@material-ui/core/ListItemText";
 import Collapse from "@material-ui/core/Collapse";
 import Divider from "@material-ui/core/Divider";
 import Box from "@material-ui/core/Box";
+import { useHotkeys } from "react-hotkeys-hook";
 
 // Components
 import Author from "../author";
@@ -36,6 +37,11 @@ import Language from "../language";
 const SearchOptions = () => {
   const classes = useStyles();
   const [open, setOpen] = React.useState(true);
+
+  useHotkeys("alt+2", () => {
+    setOpen(open => !open);
+  });
+
 
   const handleClick = () => {
     setOpen(!open);

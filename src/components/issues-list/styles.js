@@ -9,7 +9,7 @@ export default makeStyles((theme) => ({
 
 export const useListStyles = makeStyles((theme) => ({
   root: {
-    height: "100vh",
+    height: "85vh",
     overflow: "auto",
     "& .Mui-selected .issues-list-body": {
       minHeight: "65px",

@@ -56,7 +56,7 @@ const Pagination = ({ show }) => {
     </Box>
   ) : (
     <Box>
-      <Intl variant="caption" langKey={"PAGINATION"} underlinePosition={0} />
+      <Intl variant="caption" langKey={"PAGINATION"} />
       <Box display="flex" justifyContent="space-between" mt={1}>
         {pageSizes.map((results) => (
           <Button
