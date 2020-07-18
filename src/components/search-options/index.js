@@ -36,7 +36,7 @@ import Language from "../language";
 
 const SearchOptions = () => {
   const classes = useStyles();
-  const [open, setOpen] = React.useState(true);
+  const [open, setOpen] = React.useState(false);
 
   useHotkeys("alt+2", () => {
     setOpen(open => !open);
